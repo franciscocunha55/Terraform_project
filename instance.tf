@@ -18,7 +18,7 @@ resource "aws_instance" "jumper" {
 
 resource "aws_security_group" "sg_jumper" {
   name        = "sg_${var.project}-${var.environment}"
-  description = "Allow SSH to jump server"
+  description = "Allow SSH to jumper"
   vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
