@@ -1,2 +1,2 @@
-###Install the autocomplete package: 
+###Install the autocomplete package: \
 terraform -install-autocomplete
