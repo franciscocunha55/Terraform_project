@@ -1,5 +1,5 @@
 instance_type="t3.micro"
 
-ami= "ami-0d729d2846a86a9e7"
+ami= "ami-00826bd51e68b1487"
 
 key_name = "key_formacao"

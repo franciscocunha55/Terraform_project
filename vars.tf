@@ -3,6 +3,10 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
+variable "region" {
+  type = string
+  default = "eu-west-2"
+}
 variable "ami" {
   type = string
 }
@@ -20,4 +24,9 @@ variable "project" {
 variable "environment" {
   type = string
   default = "dev"
+}
+
+variable "francisco_IP" {
+  type = string
+  default = "89.153.193.70/32"
 }

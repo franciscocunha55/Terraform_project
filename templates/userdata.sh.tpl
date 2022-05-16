@@ -1,6 +1,6 @@
 #! /bin/bash
     sudo apt-get update
-		sudo apt-get install -y apache2
-		sudo systemctl start apache2
-		sudo systemctl enable apache2
-		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
+    sudo apt-get install git nginx -y
+    sudo service nginx restart
+    sudo rm -R /var/www/html/*
+    sudo git clone https://github.com/vitorfaustino/eshop-fe-demo.git /var/www/html
