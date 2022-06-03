@@ -35,7 +35,9 @@ resource "aws_instance" "encrypted_web_server" {
   subnet_id = aws_subnet.subnet_public[0].id
   key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.sg_frontend.id]
+  iam_instance_profile = data.aws_iam_instance_profile.instance_profile.name
   user_data = base64encode(data.template_file.init_encrypted.rendered)
+
   provisioner "local-exec" {
     command = "echo ${self.private_ip} > private_ips.txt"
   }
@@ -45,6 +47,17 @@ resource "aws_instance" "encrypted_web_server" {
   }
 }
 
+resource "aws_instance" "instance_exercise_group" {
+  ami = data.aws_ami.exercise1.id
+  instance_type = var.instance_type
+  vpc_security_group_ids = [aws_security_group.sg_frontend.id]
+  subnet_id = aws_subnet.subnet_public[0].id
+  key_name = var.key_name
+  iam_instance_profile = data.aws_iam_instance_profile.instance_profile_cloudwatch.name
+  tags = {
+    Name = "instance_exercise_group"
+  }
+}
 
 ### Security Group ###
 
@@ -68,6 +81,8 @@ resource "aws_security_group" "sg_frontend" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Access Nginx"
   }
+
+
 
   # outbound internet access
   egress {
