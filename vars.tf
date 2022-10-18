@@ -28,5 +28,5 @@ variable "environment" {
 
 variable "francisco_IP" {
   type = string
-  default = "89.153.193.70/32"
+  default = ""
 }
